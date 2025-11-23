@@ -87,6 +87,17 @@
                     <span class="border px-2 py-1 rounded-md">PHP</span>
                 </div>
 
+                <div class="mt-4 flex gap-2 flex-wrap text-xs">
+                    <a download href="assets/cv/cs/CV%20-%20Aleš%20Michel%20(CZ).pdf"
+                       class="mt-4 inline-block px-4 py-2 text-xs font-semibold rounded-md
+           border border-white text-white
+           hover:bg-white hover:text-black
+           transition-colors duration-200"
+                    >
+                        CV
+                    </a>
+                </div>
+
                 <!-- Contact section -->
                 <div class="mt-6 text-sm flex flex-row gap-3 flex-wrap">
 
@@ -332,7 +343,7 @@
                     </div>
                 </div>
                 <div class="mt-3 text-sm opacity-80">
-                   Developing fullstack websites using my own PHP CMS, side quests on webtrh.cz
+                    Developing fullstack websites using my own PHP CMS, side quests on webtrh.cz
                 </div>
             </div>
 
@@ -362,64 +373,64 @@
 
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-        (function(){
+    (function(){
         const sliders = document.querySelectorAll(".project-slider");
 
         sliders.forEach(slider => {
-        const slidesWrap = slider.querySelector(".project-slides");
-        const slides = slider.querySelectorAll(".project-slide");
-        const dots = slider.querySelectorAll(".dot");
-        const slideCount = slides.length;
+            const slidesWrap = slider.querySelector(".project-slides");
+            const slides = slider.querySelectorAll(".project-slide");
+            const dots = slider.querySelectorAll(".dot");
+            const slideCount = slides.length;
 
-        let index = 0;
-        let anim = false;
-        const offset = 0;
+            let index = 0;
+            let anim = false;
+            const offset = 0;
 
-        function goTo(i) {
-        index = i;
-        anim = true;
-        slidesWrap.style.transform = `translateX(-${i * 100}%)`;
-        slidesWrap.style.transition = "transform 0.5s ease";
+            function goTo(i) {
+                index = i;
+                anim = true;
+                slidesWrap.style.transform = `translateX(-${i * 100}%)`;
+                slidesWrap.style.transition = "transform 0.5s ease";
 
-        dots.forEach(d => d.classList.remove("active"));
-        dots[index].classList.add("active");
+                dots.forEach(d => d.classList.remove("active"));
+                dots[index].classList.add("active");
 
-        setTimeout(() => anim = false, 500);
-    }
+                setTimeout(() => anim = false, 500);
+            }
 
-        // DOT CLICK
-        dots.forEach(dot => {
-        dot.addEventListener("click", () => {
-        goTo(parseInt(dot.dataset.index));
-    });
-    });
+            // DOT CLICK
+            dots.forEach(dot => {
+                dot.addEventListener("click", () => {
+                    goTo(parseInt(dot.dataset.index));
+                });
+            });
 
-        // WHEEL
-        slidesWrap.addEventListener("wheel", e => {
-        e.preventDefault();
-        if (anim) return;
+            // WHEEL
+            slidesWrap.addEventListener("wheel", e => {
+                e.preventDefault();
+                if (anim) return;
 
-        if (e.deltaY > 0 && index < slideCount - 1) goTo(index + 1);
-        else if (e.deltaY < 0 && index > 0) goTo(index - 1);
-    }, { passive: false });
+                if (e.deltaY > 0 && index < slideCount - 1) goTo(index + 1);
+                else if (e.deltaY < 0 && index > 0) goTo(index - 1);
+            }, { passive: false });
 
-        // SWIPE
-        let startX = 0;
-        slidesWrap.addEventListener("touchstart", e => {
-        startX = e.touches[0].clientX;
-    });
+            // SWIPE
+            let startX = 0;
+            slidesWrap.addEventListener("touchstart", e => {
+                startX = e.touches[0].clientX;
+            });
 
-        slidesWrap.addEventListener("touchend", e => {
-        const endX = e.changedTouches[0].clientX;
-        const diff = endX - startX;
+            slidesWrap.addEventListener("touchend", e => {
+                const endX = e.changedTouches[0].clientX;
+                const diff = endX - startX;
 
-        if (diff < -40 && index < slideCount - 1) goTo(index + 1);
-        if (diff > 40 && index > 0) goTo(index - 1);
-    });
+                if (diff < -40 && index < slideCount - 1) goTo(index + 1);
+                if (diff > 40 && index > 0) goTo(index - 1);
+            });
 
-        // Init
-        goTo(0);
-    });
+            // Init
+            goTo(0);
+        });
     })();
 </script>
 
