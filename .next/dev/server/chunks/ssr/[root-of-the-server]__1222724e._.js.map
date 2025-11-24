@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Ale%C5%A1/Documents/Projects/next-portfolio/portfolio/app/page.tsx"],"sourcesContent":["import Header from \"@/components/Header\";\nimport Hero from \"@/components/Hero\";\nimport Projects from \"@/components/Projects\";\nimport Experience from \"@/components/Experience\";\nimport Footer from \"@/components/Footer\";\n\nexport default function Home() {\n  return (\n      <>\n        <Header />\n        <main className=\"max-w-6xl mx-auto px-6 pb-24\">\n          <Hero />\n          <Projects />\n          <Experience />\n        </main>\n        <Footer />\n      </>\n  );\n}\n"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAMe,SAAS;IACtB,qBACI;;0BACE,8OAAC;;;;;0BACD,8OAAC;gBAAK,WAAU;;kCACd,8OAAC;;;;;kCACD,8OAAC;;;;;kCACD,8OAAC;;;;;;;;;;;0BAEH,8OAAC;;;;;;;AAGT"}}]
+}
