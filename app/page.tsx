@@ -10,7 +10,6 @@ export default function Home() {
         <Header />
         <main className="max-w-6xl mx-auto px-6 pb-24">
           <Hero />
-          <Projects />
           <Experience />
         </main>
         <Footer />
