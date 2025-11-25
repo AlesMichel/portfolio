@@ -45,7 +45,7 @@ export default function ProjectsSlider() {
         const slides = swiperRef.current.querySelectorAll('.swiper-slide > div');
         let maxHeight = 0;
         slides.forEach(slide => {
-            maxHeight = Math.max(maxHeight, (slide as HTMLElement).offsetHeight);
+            maxHeight = Math.max(maxHeight, (slide as HTMLElement).offsetHeight) + 10;
         });
         slides.forEach(slide => {
             (slide as HTMLElement).style.height = `${maxHeight}px`;
@@ -66,7 +66,7 @@ export default function ProjectsSlider() {
                     slidesPerView={1}
                     navigation={false}
                     pagination={{ clickable: true }}
-                    autoplay={{ delay: 3000 }}
+                    autoplay={false}
                     loop={true}
                     breakpoints={{
                         768: { slidesPerView: 2 },
@@ -76,23 +76,26 @@ export default function ProjectsSlider() {
                     <>
                     {projectData.map((project, i) => (
                         <SwiperSlide key={i}>
-                            <div className="p-6 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-2xl shadow-lg transition-transform hover:scale-[1.02] flex flex-col h-full">
+                            <div
+                                className="p-6 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-2xl shadow-lg transition-transform hover:scale-[1.02] flex flex-col h-full">
                                 <img
                                     src={project.img}
                                     alt={project.title}
                                     className="w-full h-48 object-cover rounded-xl"
                                 />
                                 <h3 className="text-lg font-semibold mt-4">{project.title}</h3>
-                                <p className="mt-3 text-sm opacity-80 flex-1">{project.desc}</p>
-                                <div className="mt-4 flex gap-2 flex-wrap text-xs">
+                                <div className="mt-2 flex gap-2 flex-wrap text-xs">
                                     {project.tags.map((tag, idx) => (
                                         <span key={idx} className="border px-2 py-1 rounded-md">{tag}</span>
                                     ))}
                                 </div>
+
+                                <p className="mt-3 text-sm opacity-80 flex-1">{project.desc}</p>
+
                             </div>
                         </SwiperSlide>
                     ))}
-                        </>
+                    </>
                 </Swiper>
             </div>
         </section>
