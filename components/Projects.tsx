@@ -1,5 +1,5 @@
 'use client'
-
+import { projectData } from "@/components/data/projects";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -7,37 +7,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import { useEffect, useRef } from 'react';
-
-interface Project {
-    title: string;
-    desc: string;
-    img: string;
-    tags: string[];
-}
+import Link from 'next/link';
 
 export default function ProjectsSlider() {
     const swiperRef = useRef<HTMLDivElement>(null);
 
-    const projectData: Project[] = [
-        {
-            title: 'Website for lawyer',
-            desc: 'Single page with contact form https://www.huckova.cz/',
-            img: '/assets/projects/huckova.png',
-            tags: ['PHP'],
-        },
-        {
-            title: 'Checkout & Payments',
-            desc: 'Stripe payments, custom checkout flow.',
-            img: '/img/project2-2.jpg',
-            tags: ['Stripe', 'API'],
-        },
-        {
-            title: 'Admin & CMS',
-            desc: 'Product admin, analytics, inventory.',
-            img: '/img/project2-3.jpg',
-            tags: ['CMS', 'Dashboard'],
-        },
-    ];
 
     // Nastavení stejné výšky pro všechny slidery
     useEffect(() => {
@@ -76,8 +50,10 @@ export default function ProjectsSlider() {
                     <>
                     {projectData.map((project, i) => (
                         <SwiperSlide key={i}>
-                            <div
-                                className="p-6 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-2xl shadow-lg transition-transform hover:scale-[1.02] flex flex-col h-full">
+                            <Link
+                                href={`/projects/${project.slug}`}
+                                className="block p-6 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-2xl shadow-lg transition-transform hover:scale-[1.02] flex flex-col h-full no-underline"
+                            >
                                 <img
                                     src={project.img}
                                     alt={project.title}
@@ -89,11 +65,10 @@ export default function ProjectsSlider() {
                                         <span key={idx} className="border px-2 py-1 rounded-md">{tag}</span>
                                     ))}
                                 </div>
-
                                 <p className="mt-3 text-sm opacity-80 flex-1">{project.desc}</p>
-
-                            </div>
+                            </Link>
                         </SwiperSlide>
+
                     ))}
                     </>
                 </Swiper>
